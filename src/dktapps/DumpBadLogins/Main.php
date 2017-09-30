@@ -18,6 +18,12 @@ class Main extends PluginBase implements Listener{
 	public function onEnable(){
 		$this->getServer()->getPluginManager()->registerEvents($this, $this);
 		$this->file = fopen($this->getDataFolder() . "xbl_not_authed.log", "ab");
+
+		if(!$this->getServer()->requiresAuthentication()){
+			$this->getLogger()->critical("This plugin won't work if you disable \"online-mode\"! Please enable \"online-mode\" in server.properties.");
+			$this->getServer()->getPluginManager()->disablePlugin($this);
+			return;
+		}
 	}
 
 	/**
