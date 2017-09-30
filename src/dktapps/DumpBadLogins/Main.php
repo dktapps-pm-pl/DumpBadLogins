@@ -7,6 +7,7 @@ use pocketmine\event\player\PlayerKickEvent;
 use pocketmine\event\player\PlayerLoginEvent;
 use pocketmine\event\server\DataPacketReceiveEvent;
 use pocketmine\network\mcpe\protocol\LoginPacket;
+use pocketmine\network\mcpe\protocol\ProtocolInfo;
 use pocketmine\plugin\PluginBase;
 
 class Main extends PluginBase implements Listener{
@@ -33,7 +34,10 @@ class Main extends PluginBase implements Listener{
 	 */
 	public function onPacketReceive(DataPacketReceiveEvent $ev){
 		if(($packet = $ev->getPacket()) instanceof LoginPacket){
-			$this->packets[spl_object_hash($ev->getPlayer())] = clone $packet;
+			/** @var LoginPacket $packet */
+			if($packet->protocol === ProtocolInfo::CURRENT_PROTOCOL){
+				$this->packets[spl_object_hash($ev->getPlayer())] = clone $packet;
+			}
 		}
 	}
 
