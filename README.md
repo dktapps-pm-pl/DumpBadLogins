@@ -2,7 +2,7 @@
 
 PocketMine-MP plugin used for debugging issues with Xbox Live sign-in.
 
-**This plugin REQUIRES that `online-mode` be enabled in server.properties.**
+**This plugin REQUIRES that `xbox-auth` be enabled in server.properties.**
 
 ## WARNING
 This plugin allows non-Xbox players to join the server. Ensure that you have backup authentication methods in case players are not logged into Xbox Live.
