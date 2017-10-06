@@ -21,7 +21,7 @@ class Main extends PluginBase implements Listener{
 		$this->file = fopen($this->getDataFolder() . "xbl_not_authed.log", "ab");
 
 		if(!$this->getServer()->requiresAuthentication()){
-			$this->getLogger()->critical("This plugin won't work if you disable \"online-mode\"! Please enable \"online-mode\" in server.properties.");
+			$this->getLogger()->critical("This plugin won't work if you disable \"xbox-auth\"! Please enable \"xbox-auth\" in server.properties.");
 			$this->getServer()->getPluginManager()->disablePlugin($this);
 			return;
 		}
