@@ -49,7 +49,10 @@ class Main extends PluginBase implements Listener{
 	public function onPlayerKick(PlayerKickEvent $ev){
 		if($ev->getReason() === "disconnectionScreen.notAuthenticated"){
 			$player = $ev->getPlayer();
-			$packet = $this->packets[$hash = spl_object_hash($player)];
+			$packet = $this->packets[$hash = spl_object_hash($player)] ?? null;
+			if($packet === null){
+				return;
+			}
 
 			$message = "%s is not logged into Xbox Live!";
 			$type = "not XBOX";
